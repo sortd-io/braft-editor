@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.7",
+    "@draft-js-plugins/editor": "^4.1.0",
     "@maximusft/mergeclassnames": "github:MaximusFT/mergeClassNames",
     "braft-convert": "^2.3.0",
     "braft-extensions": "beta",

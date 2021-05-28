@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BraftFinder from 'braft-finder';
 import { ColorUtils, ContentUtils } from 'braft-utils';
-import { Editor, EditorState } from 'draft-js';
+import Editor from '@draft-js-plugins/editor';
+
+import { EditorState } from 'draft-js';
 import { Map } from 'immutable';
 import mergeClassNames from '@maximusft/mergeclassnames';
 
@@ -622,7 +624,7 @@ class BraftEditor extends React.Component {
           isFullscreen && 'fullscreen',
         )}
       >
-        <ControlBar {...controlBarProps} />
+        {this.props.controlBar && <ControlBar {...controlBarProps} />}
         {componentBelowControlBar}
         <div
           onCompositionStart={this.handleCompositionStart}
@@ -630,7 +632,7 @@ class BraftEditor extends React.Component {
           onCopy={this.handleCopyContent}
           style={contentStyle}
         >
-          <Editor {...draftProps} />
+          <Editor {...draftProps} plugins={this.props.plugins} />
         </div>
       </div>
     );
@@ -643,6 +645,8 @@ BraftEditor.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.any,
   defaultValue: PropTypes.any,
+  controlBar: PropTypes.bool,
+  plugins: PropTypes.array
 };
 
 export default BraftEditor;
